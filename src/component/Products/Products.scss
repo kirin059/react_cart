@@ -1,0 +1,46 @@
+.Products {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+    background: #fff;
+    border: 1px solid red;
+    box-sizing: border-box;
+    font-family: 'Audiowide', cursive;
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        z-index: 100;
+        top: 0;
+        padding: 6px 20px;
+        height: 52px;
+        background: white;
+        border: 1px solid red;
+        
+        .header-left {
+            display: flex;
+            button {
+                background: none;
+                border: none;
+                font-size: 20px;
+            }
+            
+            h1 {
+                color: #6415B7;
+                font-size: 20px;
+            }
+        }     
+        
+        .header_right {
+            button {
+                background: none;
+                border: 1px solid black;
+                color: white;
+            }
+        }
+    }
+}
