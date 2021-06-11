@@ -1,22 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Products.scss';
 
-const Products = () => {
+const Products = (props) => {
+    console.log(props.state)
     return (
-        <div className="Products">
-            <header>
-                <div className="header-left">
-                    <button><i class="fas fa-bars"></i></button>
-                    <h1>PURPLE STORE</h1>
-                </div>
-                <div className="header_right">
-                    <button><i class="fas fa-shopping-cart"></i></button>
-                </div>
-            </header>
-            <section></section>
-            
-        </div>
+        <div className="Products" >
+            {
+                props.state.map((a, i) => {
+                    return (
+                        <div className="img_content" key={i}>
+                            <img alt="product" class="product_img" src={a[i].src}/>
+                            <div className="cart_img"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                    );
+                })
+            }
+        </div> 
     );
 };
 
-export default Products;
+//export default Products;
+
+function productProps(state) {
+    return {
+        state: state
+    }
+}
+export default connect(productProps)(Products);

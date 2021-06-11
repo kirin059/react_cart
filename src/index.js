@@ -6,10 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+//import { store } from './redux/store';
 
-let shoeState = '';
+let productState = [
+  { src: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원'},
+  { src: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
+  { src: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
+  { src: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원'}
+];
 
-function reducer(state=shoeState, action) {
+function reducer(state = productState, action) {
+  console.log(state)
     return state
 }
 
@@ -19,7 +26,7 @@ const store = createStore( reducer );
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={ store }>
+      <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>

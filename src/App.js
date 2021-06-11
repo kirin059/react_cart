@@ -1,16 +1,30 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
-import './App.css';
+import './App.scss';
+import Loading from './component/Loading';
 import Products from './component/Products/Products';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
+        <header>
+          <div className="header-left">
+            <button><i class="fas fa-bars"></i></button>
+            <h1>PURPLE STORE</h1>
+          </div>
+          <div className="header_right">
+            <button><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </header>
 
       <Switch>
         {/* 상품 리스트 */}
         <Route path="/">
-          <Products />
+          <Loading />
+
+          <Products  />
+
+          
         </Route>
 
           {/* 장바구니 */}
@@ -24,3 +38,5 @@ function App() {
 }
 
 export default App;
+
+
