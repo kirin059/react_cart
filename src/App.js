@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import './App.scss';
 import Loading from './component/Loading';
+import Modal from './component/Modal/Modal';
 import Products from './component/Products/Products';
 
 function App(props) {
@@ -22,7 +23,8 @@ function App(props) {
         <Route path="/">
           <Loading />
 
-          <Products  />
+          <Products />
+          <Modal />
 
           
         </Route>

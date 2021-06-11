@@ -2,7 +2,6 @@
     position: relative;
     background: #e0e0e0;
     box-sizing: border-box;
-    font-family: 'Audiowide', cursive;
 
     header {
         display: flex;
@@ -17,6 +16,7 @@
         padding: 6px 20px;
         height: 52px;
         background: white;
+        font-family: 'Audiowide', cursive;
         
         .header-left {
             display: flex;

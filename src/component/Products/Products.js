@@ -9,9 +9,19 @@ const Products = (props) => {
             {
                 props.state.map((a, i) => {
                     return (
-                        <div className="img_content" key={i}>
-                            <img alt="product" class="product_img" src={a[i].src}/>
-                            <div className="cart_img"><i class="fas fa-shopping-cart"></i></div>
+                        <div className="product_container" key={i}>
+                            <div className="img_content">
+                                <img alt="product" class="product_img" src={props.state[i].img}/>
+                                <div className="cart_img"><i class="fas fa-shopping-cart" onClick={() => {
+                                    props.dispatch({type: 'modalOpen'})
+                                }}></i></div>
+                            </div>
+
+                            <div className="product_info">
+                                <div>{ props.state[i].info }</div>
+                                <div>{ props.state[i].weight }</div>
+                                <div className="price">{ props.state[i].price }</div>
+                            </div>
                         </div>
                     );
                 })
@@ -20,11 +30,11 @@ const Products = (props) => {
     );
 };
 
-//export default Products;
 
 function productProps(state) {
     return {
-        state: state
+        state: state.reducer,
+        modal: state.reducer2
     }
 }
 export default connect(productProps)(Products);
