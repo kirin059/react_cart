@@ -12,9 +12,12 @@ const Products = (props) => {
                         <div className="product_container" key={i}>
                             <div className="img_content">
                                 <img alt="product" class="product_img" src={props.state[i].img}/>
-                                <div className="cart_img"><i class="fas fa-shopping-cart" onClick={() => {
-                                    props.dispatch({type: 'modalOpen'})
-                                }}></i></div>
+                                <div className="cart_img" onClick={() => {
+                                        props.dispatch({ type: 'modalOpen' })
+                                        document.body.style.overflow = "hidden";
+                                    }}>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
                             </div>
 
                             <div className="product_info">

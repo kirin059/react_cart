@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Switch, Route} from 'react-router-dom'
 import './App.scss';
 import Loading from './component/Loading';
@@ -19,15 +20,21 @@ function App(props) {
         </header>
 
       <Switch>
+
         {/* 상품 리스트 */}
         <Route path="/">
           <Loading />
 
           <Products />
-          <Modal />
-
-          
+          {
+            props.modal === true
+              ? <Modal />
+              : null
+          }
+          {/* <Modal /> */}
         </Route>
+
+        
 
           {/* 장바구니 */}
         <Route path="/cart-items"></Route>
@@ -39,6 +46,12 @@ function App(props) {
   );
 }
 
-export default App;
+function productProps(state) {
+  return {
+      state: state.reducer,
+      modal: state.reducer2
+  }
+}
+export default connect(productProps)(App);
 
 

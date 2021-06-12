@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 //import { store } from './redux/store';
 
+// product reducer
 let productState = [
   { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원'},
   { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
@@ -22,9 +23,11 @@ function reducer(state = productState, action) {
     return state
 }
 
+// modal reducer
 let modalState = false;
 
 function reducer2(state = modalState, action) {
+  console.log(state)
   if (action.type === 'modalClose') {
     state = false;
     return state;
@@ -51,7 +54,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
