@@ -1,3 +1,6 @@
+$purple: #6415B7;
+$light_grey: #f2f2f2;
+
 .Products {
    display: grid;
    grid-template-rows: 1fr 1fr;
@@ -24,7 +27,7 @@
          align-items: center;
          width: 100%;
          height: 300px;
-         background: #f2f2f2;
+         background: $light_grey;
          border-radius: 10px;
 
          img {
@@ -40,9 +43,9 @@
             bottom: 10px;
             padding: 8px;
             font-size: 20px;
-            color: #6415B7; 
+            color: $purple;
             background: #fff;
-            border: 1px solid #6415B7;
+            border: 1px solid $purple;
             border-radius: 50%;
             cursor: pointer;
          }

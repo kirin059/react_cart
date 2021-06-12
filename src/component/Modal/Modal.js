@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import './Modal.scss';
 
 const Modal = (props) => {
+
     
     return (
-        <div className="Modal">
-            <div className="bg" onClick={() => {
+        <div className="Modal" backdrop="static">
+            <div className="bg" onClick={(e) => {
+                e.stopPropagation()
                 props.dispatch({ type: 'modalClose' });
                 document.body.style.overflow = "auto";
             }}>
@@ -16,12 +18,16 @@ const Modal = (props) => {
             }}>
                     <h1>정기배송 장바구니에 담겼습니다.</h1>
 
-                    <div className="loading_bar">
-                    <i class="fas fa-check"></i>
+                    <div className="loading_container">
+                        <span className="loading_bar" style={{ width: '100px' }}></span>
+                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check"></i>
                     </div>
 
                     <div className="button_container">
-                        <button className="put" onClick={() => {
+                        <button className="put" onClick={(e) => {
+                            e.stopPropagation()
                             props.dispatch({ type: 'modalClose' })
                             document.body.style.overflow = "auto";
                         }}>계속 담기</button>
@@ -31,7 +37,6 @@ const Modal = (props) => {
                 
             </div>
         </div>
-
     );
 };
 
