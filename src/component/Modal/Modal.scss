@@ -23,7 +23,7 @@ $dark_grey: #e0e0e0;
             top: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: space-between;
             max-width: 480px;
             width: 100%;
             height: 35%;
@@ -40,26 +40,55 @@ $dark_grey: #e0e0e0;
             }
 
             .loading_container {
-                //position: relative;
+                position: relative;
                 width: 100%;
                 height: 10px;
                 background: $dark_grey;
                 border-radius: 40px;
 
                 .loading_bar {
+                    display: block;
+                    width: 100px;  // inline style로 넣어서 조작
                     height: 10px;
                     background: linear-gradient(to right, #b8a0d1, $purple);
                     border-radius: 40px;
                 }
 
-                .fa-check {
-                    padding: 2.5px;
-                    color: $purple;
-                    background-color: white;
-                    border: 2px solid $purple;
-                    border-radius: 50%;
-                    font-size: 5px;
+                .loading {
+                    position: absolute;
+                    top: -3px;
+                    right: 0;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-evenly;
+
+                    .loading_mark {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+    
+                        .fa-check {
+                            margin-left: 40px;
+                            padding: 3px;
+                            width: 10px;
+                            height: 10px;
+                            color: $purple;
+                            background-color: white;
+                            border: 2px solid $purple;
+                            border-radius: 50%;
+                            font-size: 5px;
+                            text-align: right;
+                        }
+                        
+                        span {
+                            color: $purple;
+                            font-size: 12px;
+                            margin: 5px 0 0 35px;
+                        }
+                    }
+
                 }
+
             }
 
             .button_container {

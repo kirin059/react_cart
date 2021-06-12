@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import axios from 'axios';
 import './App.scss';
 import Loading from './component/Loading';
 import Modal from './component/Modal/Modal';
 import Products from './component/Products/Products';
 
 function App(props) {
+
+  async function ajax() {
+    await axios.get('http://task.purplesto.re/api/cart-items', {
+      headers: {
+        // 'origin': 'http://task.purplesto.re/api/cart-items'
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
+      .then(res => console.log(res))
+      .catch(() => {
+        console.log('failure')
+      })
+  }
+  
+  useEffect(() => {
+     ajax()
+  }, [])
+
   return (
     <div className="App">
         <header>

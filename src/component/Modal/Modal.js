@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import './Modal.scss';
 
 const Modal = (props) => {
-
+    let [mark, setMark] = useState([20, 15, 10, 5])
+    console.log(mark)
     
     return (
         <div className="Modal" backdrop="static">
@@ -15,14 +16,24 @@ const Modal = (props) => {
 
                 <div className="content" onClick={() => {
                 document.body.style.display = "block";
-            }}>
+                }}>
                     <h1>정기배송 장바구니에 담겼습니다.</h1>
 
                     <div className="loading_container">
-                        <span className="loading_bar" style={{ width: '100px' }}></span>
-                        <i class="fas fa-check"></i>
-                        <i class="fas fa-check"></i>
-                        <i class="fas fa-check"></i>
+                        <span className="loading_bar" ></span>
+                        <div className="loading">
+                        {
+                            mark.map((a, i) => {
+                                return (
+                                    <div className="loading_mark" key={i}>
+                                        <i class="fas fa-check"></i>
+                                        <span>기본 {mark[i]}% <i class="fas fa-arrow-down"></i></span>
+                                    </div>
+                                );
+                            })
+                        }
+                        </div>
+                        
                     </div>
 
                     <div className="button_container">
