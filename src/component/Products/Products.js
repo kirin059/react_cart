@@ -27,10 +27,10 @@ const Products = (props) => {
     //      ajax()
     //   }, [])
     let [load, setLoad] = useState({
-                                productList: [],
-                                items: 0,
-                                preItems: 0
-                            })
+        productList: [],
+        items: 0,
+        preItems: 0
+    })
 
     useEffect(() => {
         fetch(Data)
@@ -41,27 +41,30 @@ const Products = (props) => {
             setLoad(copy);
         });
         window.addEventListener("scroll", infiniteScroll, true);
+
+        return () => {
+            infiniteScroll = () => {
+                let scrollHeight = Math.max(
+                  document.documentElement.scrollHeight,
+                  document.body.scrollHeight
+                );
+                let scrollTop = Math.max(
+                  document.documentElement.scrollTop,
+                  document.body.scrollTop
+                );
+                let clientHeight = document.documentElement.clientHeight;
+            
+                if (scrollTop + clientHeight >= scrollHeight) {
+                  this.setState({
+                    preItems: this.state.items,
+                    items: this.state.items + 10,
+                  });
+                }
+              };
+        }
     })
 
-    infiniteScroll = () => {
-        let scrollHeight = Math.max(
-          document.documentElement.scrollHeight,
-          document.body.scrollHeight
-        );
-        let scrollTop = Math.max(
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        );
-        let clientHeight = document.documentElement.clientHeight;
-    
-        if (scrollTop + clientHeight >= scrollHeight) {
-          this.setState({
-            preItems: this.state.items,
-            items: this.state.items + 10,
-          });
-          this.componentDidMount();
-        }
-      };
+   
     
     return (
         <div className="Products" >

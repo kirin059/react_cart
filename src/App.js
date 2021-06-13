@@ -36,7 +36,9 @@ function App(props) {
         
 
           {/* 장바구니 */}
-        <Route path="/cart-items"></Route>
+        <Route path="/cart-items/:id">
+
+        </Route>
 
         
 
