@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import './Products.scss';
 import Data from '../../Data';
+import { useHistory } from 'react-router';
 //import Loading from './component/Loading';
 
 const Products = (props) => {
+    let history = useHistory();
     // async function ajax() {
     //     await axios.get('http://task.purplesto.re/api/cart-items', {
     //       headers: {
@@ -66,7 +68,7 @@ const Products = (props) => {
             {
                 props.state.map((a, i) => {
                     return (
-                        <div className="product_container" key={i}>
+                        <div className="product_container" key={i} onClick={() => {history.push('/cart-items/' + props.state[i].id) }}>
                             <div className="img_content">
                                 <img alt="product" class="product_img" src={props.state[i].img}/>
                                 <div className="cart_img" onClick={() => {
