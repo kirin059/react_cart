@@ -1,9 +1,66 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import './Products.scss';
+import Data from '../../Data';
+//import Loading from './component/Loading';
 
 const Products = (props) => {
-    console.log(props.state)
+    // async function ajax() {
+    //     await axios.get('http://task.purplesto.re/api/cart-items', {
+    //       headers: {
+    //         // 'origin': 'http://task.purplesto.re/api/cart-items'
+    //         // "Access-Control-Allow-Origin": "*"
+    //         "Access-Control-Allow-Origin": 'http://task.purplesto.re/api/cart-items',
+    //       }
+    //     })
+    //         .then(res => console.log(res))
+    //         // <Loading />
+    //       .catch(() => {
+    //         console.log('failure')
+    //       })
+    //   }
+      
+    //   useEffect(() => {
+    //      ajax()
+    //   }, [])
+    let [load, setLoad] = useState({
+                                productList: [],
+                                items: 0,
+                                preItems: 0
+                            })
+
+    useEffect(() => {
+        fetch(Data)
+        .then((res) => {
+            let result = res.data.slice(preItems, items);
+            let copy = [...load]
+            copy.productList = [...productList, ...result],
+            setLoad(copy);
+        });
+        window.addEventListener("scroll", infiniteScroll, true);
+    })
+
+    infiniteScroll = () => {
+        let scrollHeight = Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        );
+        let scrollTop = Math.max(
+          document.documentElement.scrollTop,
+          document.body.scrollTop
+        );
+        let clientHeight = document.documentElement.clientHeight;
+    
+        if (scrollTop + clientHeight >= scrollHeight) {
+          this.setState({
+            preItems: this.state.items,
+            items: this.state.items + 10,
+          });
+          this.componentDidMount();
+        }
+      };
+    
     return (
         <div className="Products" >
             {

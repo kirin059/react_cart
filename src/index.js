@@ -6,41 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+import Data from './Data';
 //import { store } from './redux/store';
 
 // product reducer
-let productState = [
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원'},
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' },
-  { img: "https://cdn.purplesto.re/media/store/sale/main_image/ziwipeak_dog_B046DF36_thumb01.png", info: '에어드라이 오타고밸리', weight: '900g', price: '100원' }
-];
+let productState = Data;
 
 function reducer(state = productState, action) {
-  console.log(state)
+
     return state
 }
 
